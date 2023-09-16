@@ -28,12 +28,19 @@ public class _00_ArrayCheatSheet {
 		int smallestArray = intArray[0];
 		for(int i = 1; i<intArray.length; i++) {
 			if(intArray [i] < smallestArray) {
-				
+			smallestArray = intArray [i];
 			}
 		}
 		System.out.println(smallestArray);
 		//9 print the entire array to see if step 8 was correct
 		
 		//10. print the largest number in the array.
+		int largestArray = intArray[0];
+		for(int i = 1; i<intArray.length; i++) {
+			if(intArray [i] > largestArray) {
+			largestArray = intArray [i];
+			}
+		}
+		System.out.println(largestArray);
 	}
 }
