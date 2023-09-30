@@ -36,10 +36,11 @@ public class MIDIKeyboard implements KeyListener{
 		noteLabel.setFont(new Font("Arial", Font.BOLD, 40));
 		noteLabel.setHorizontalAlignment(JLabel.CENTER);
 		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addKeyListener(this);
+		frame.setVisible(true);
 		// 1. Set the default close operation of your JFrame to JFrame.EXIT_ON_CLOSE
-
 		// 2. Add a key listener to your JFrame
-
 		// 3. Set your frame to be visible
 
 		frame.add(noteLabel);
@@ -53,21 +54,20 @@ public class MIDIKeyboard implements KeyListener{
 		if(keyCode == lastKey) return;
 		lastKey = keyCode;
 		System.out.println(keyCode);
+		if(keyboardRowQtoP.contains(keyCode)) {
+			playNote(keyCode, keyboardRowQtoP, piano);
+		}if(keyboardRowAtoL.contains(keyCode)) {
+			playNote(keyCode, keyboardRowAtoL, piano);
+		}if(keyboardRowZtoM.contains(keyCode)) {
+			playNote(keyCode, keyboardRowZtoM, drums);
+		}
 		
 		// 4. if keyboardRowQtoP contains keyCode...
-
 			// 5. call playNote() with keyCode, keyboardRowQtoP, and piano as the arguments
-
-
 		// 9. if keyboardRowAtoL contains keyCode...
-
 			// 10. call playNote() with keyCode, keyboardRowAtoL, and piano as the arguments
-
-
 		// 13. if keyboardRowZtoM contains keyCode...
-
 			// 14. call playNote() with keyCode, keyboardRowZtoM, and drums as the arguments
-
 
 	}
 
@@ -75,24 +75,25 @@ public class MIDIKeyboard implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		lastKey = 0;
-		
+		if(keyboardRowQtoP.contains(keyCode)) {
+			stopNote(keyCode, keyboardRowQtoP, piano);
+		}if(keyboardRowAtoL.contains(keyCode)) {
+			stopNote(keyCode, keyboardRowAtoL, piano);
+		}if(keyboardRowZtoM.contains(keyCode)) {
+			stopNote(keyCode, keyboardRowZtoM, drums); 
+		}
+	}
+
 		// 6. if keyboardRowQtoP contains keyCode...
-
 			// 7. call stopNote() with keyCode, keyboardRowQtoP, and piano as the arguments
-
 		// 8. Run your program. Does it play notes when you press a key between Q and P on your keyboard?
 		// 11. if keyboardRowAtoL contains keyCode...
-
 			// 12. call stopNote() with keyCode, keyboardRowAtoL, and piano as the arguments
-
-		
 		// 15. if keyboardRowZtoM contains keyCode...
-
 			// 16. call stopNote() with keyCode, keyboardRowZtoM, and drums as the arguments
 
 		
 		
-	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
